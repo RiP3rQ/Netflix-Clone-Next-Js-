@@ -38,7 +38,7 @@ const Home = ({
 
       {/* Header Component */}
       <Header />
-      <main>
+      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16 ">
         {/* Banner Component */}
         <Banner netflixOriginals={netflixOriginals} />
         <section>
