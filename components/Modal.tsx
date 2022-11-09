@@ -1,3 +1,4 @@
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import MuiModal from "@mui/material/Modal";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
@@ -11,7 +12,11 @@ function Modal() {
 
   return (
     <MuiModal open={showModal} onClose={handleClose}>
-      <>Modal</>
+      <>
+        <button>
+          <XMarkIcon className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]" />
+        </button>
+      </>
     </MuiModal>
   );
 }
