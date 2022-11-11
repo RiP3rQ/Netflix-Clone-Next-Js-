@@ -32,8 +32,12 @@ const Home = ({
   trendingNow,
 }: Props) => {
   const { user, loading } = useAuth();
-  if (loading) return null;
   const showModal = useRecoilValue(modalState);
+  const subscription = false;
+
+  if (loading || subscription === null) return null;
+
+  if (!subscription) return <div>Plans</div>;
 
   return (
     <div
