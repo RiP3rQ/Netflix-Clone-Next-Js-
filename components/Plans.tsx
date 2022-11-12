@@ -1,9 +1,14 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { Product } from "@stripe/firestore-stripe-payments";
 import Head from "next/head";
 import Link from "next/link";
 import useAuth from "../hooks/useAuth";
 
-function Plans() {
+interface Props {
+  products: Product[];
+}
+
+function Plans({ products }: Props) {
   const { logout } = useAuth();
 
   return (
