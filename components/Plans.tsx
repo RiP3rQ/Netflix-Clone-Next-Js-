@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
+import Loader from "./Loader";
 import Table from "./Table";
 
 interface Props {
