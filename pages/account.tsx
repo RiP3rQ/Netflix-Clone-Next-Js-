@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
+import Membership from "../components/Membership";
 // import Membership from "../components/Membership";
 import useAuth from "../hooks/useAuth";
 import useSubscription from "../hooks/useSubscription";
@@ -58,7 +59,7 @@ function Account({ products }: Props) {
         </div>
 
         {/* MEMBERSHIP COMPONENT */}
-        {/* <Membership /> */}
+        <Membership />
 
         <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0 md:pb-0">
           <h4 className="text-lg text-[gray]">Plan Details</h4>
@@ -75,6 +76,16 @@ function Account({ products }: Props) {
             // onClick={goToBillingPortal}
           >
             Change plan
+          </p>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0">
+          <h4 className="text-lg text-[gray]">Settings</h4>
+          <p
+            className="col-span-3 cursor-pointer text-blue-500 hover:underline"
+            onClick={logout}
+          >
+            Sign out of all devices
           </p>
         </div>
       </main>
