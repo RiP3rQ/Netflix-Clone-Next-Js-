@@ -9,6 +9,13 @@ function Membership() {
   const subscription = useSubscription(user);
   const [isBillingLoading, setBillingLoading] = useState(false);
 
+  const manageSubscription = () => {
+    if (subscription) {
+      setBillingLoading(true);
+      //   goToBillingPortal();
+    }
+  };
+
   return (
     <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0">
       <div className="space-y-2 py-4">
