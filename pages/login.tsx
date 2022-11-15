@@ -16,6 +16,7 @@ function Login() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -53,13 +54,14 @@ function Login() {
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="text-4xl font-semibold">Sign In</h1>
-
         <div className="space-y-4">
           <label className="inline-block w-full">
             <input
               type="email"
               placeholder="Email"
-              className="input"
+              className={`input ${
+                errors.email && "border-b-2 border-orange-500"
+              }`}
               {...register("email", { required: true })}
             />
             {errors.email && (
@@ -68,12 +70,14 @@ function Login() {
               </p>
             )}
           </label>
-          <label htmlFor="">
+          <label className="inline-block w-full">
             <input
               type="password"
-              placeholder="Password"
-              className="input"
               {...register("password", { required: true })}
+              placeholder="Password"
+              className={`input ${
+                errors.password && "border-b-2 border-orange-500"
+              }`}
             />
             {errors.password && (
               <p className="p-1 text-[13px] font-light  text-orange-500">
@@ -82,20 +86,19 @@ function Login() {
             )}
           </label>
         </div>
-
         <button
           className="w-full rounded bg-[#E50914] py-3 font-semibold"
           onClick={() => setLogin(true)}
+          type="submit"
         >
           Sign In
         </button>
-
         <div className="text-[gray]">
           New to Netflix?{" "}
           <button
             className="cursor-pointer text-white hover:underline"
-            type="submit"
             onClick={() => setLogin(false)}
+            type="submit"
           >
             Sign up now
           </button>
