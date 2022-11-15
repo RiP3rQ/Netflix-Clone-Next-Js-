@@ -33,6 +33,7 @@ function Modal() {
   const [muted, setMuted] = useState(true);
   const [addedToList, setAddedToList] = useState(false);
   const { user } = useAuth();
+  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
 
   const toastStyle = {
     background: "white",
@@ -70,6 +71,25 @@ function Modal() {
 
     fetchMovie();
   }, [movie]);
+
+  // Find all the movies in the user's list
+  useEffect(() => {
+    if (user) {
+      return onSnapshot(
+        collection(db, "customers", user.uid, "myList"),
+        (snapshot) => setMovies(snapshot.docs)
+      );
+    }
+  }, [db, movie?.id]);
+
+  // Check if the movie is already in the user's list
+  useEffect(
+    () =>
+      setAddedToList(
+        movies.findIndex((result) => result.data().id === movie?.id) !== -1
+      ),
+    [movies]
+  );
 
   const handleList = async () => {
     if (addedToList) {
